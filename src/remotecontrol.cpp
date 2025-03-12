@@ -34,9 +34,9 @@
 
 #include "systemcontainer.h"
 #include "effects/strip/misceffects.h"
-#include "systemcontainer.h"
+// #include "systemcontainer.h"
 
-#define BRIGHTNESS_STEP     20
+#define BRIGHTNESS_STEP     40
 
 void RemoteControl::handle()
 {
