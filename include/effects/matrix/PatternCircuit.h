@@ -227,8 +227,9 @@ public:
             g()->leds[XY(random(0, MATRIX_WIDTH), random(0, MATRIX_HEIGHT))].fadeToBlackBy(32);
         }
 
-        // fill_palette(colors, SNAKE_LENGTH, initialHue++, 5, graphics->currentPalette, 255, LINEARBLEND);
-        fill_palette(colors, SNAKE_LENGTH, 0, 4, ForestColors_p, 255, LINEARBLEND);
+        // Use GetCurrentPalette() to access the current palette
+        fill_palette(colors, SNAKE_LENGTH, 0, 4, g()->GetCurrentPalette(), 255, LINEARBLEND);
+
         for (int i = 0; i < snakeCount; i++)
         {
             Path *path = &snakes[i];
