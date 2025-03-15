@@ -132,14 +132,17 @@ const DesignerPanel = ({ open, addNotification }) => {
                         sync();
                     });
                 }}}>            
-            {effects.map((effect,idx) => (effect.enabled || showDisabled) && <Effect
-                onDragStart={(event, index) => {
+            {effects
+                .map((effect, index) => ({ effect, index }))
+                .sort((a, b) => a.effect.name.localeCompare(b.effect.name))
+                .map(({ effect, index }) => (effect.enabled || showDisabled) && <Effect
+                onDragStart={(event) => {
                     handleDragStart(event, index, setDragging)
                 }} 
-                onDragOver={(event, index) => {handleDragOver(event, index, setDropTarget)}}
-                key={`effect-${idx}`}
+                onDragOver={(event) => {handleDragOver(event, index, setDropTarget)}}
+                key={`effect-${index}`}
                 effect={effect}
-                effectIndex={idx}
+                effectIndex={index}
                 navigateTo={navigateTo}
                 requestRunning={requestRunning}
                 effectEnable={effectEnable}
